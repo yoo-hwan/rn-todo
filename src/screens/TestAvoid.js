@@ -1,9 +1,10 @@
-import { KeyboardAvoidingView, View, Image } from 'react-native';
+import { KeyboardAvoidingView, View, Image, Platform } from 'react-native';
 import Input from '../components/Input';
 
 const TestAvoid = () => {
   return (
-    <KeyboardAvoidingView>
+    <KeyboardAvoidingView style={[(flex: 1)]}
+    behavior={Platform.select([ios:'padding'])}>
       <View>
         <Image
           source={require('../../assets/main.png')}
