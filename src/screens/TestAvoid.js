@@ -3,8 +3,7 @@ import Input from '../components/Input';
 
 const TestAvoid = () => {
   return (
-    <KeyboardAvoidingView style={[(flex: 1)]}
-    behavior={Platform.select([ios:'padding'])}>
+    <KeyboardAvoidingView>
       <View>
         <Image
           source={require('../../assets/main.png')}
