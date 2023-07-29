@@ -1,23 +1,39 @@
+import { useState } from 'react';
 import { StyleSheet, View, Image } from 'react-native';
-import Input, { KeyboardTypes, ReturnKeyTypes } from '../components/Input';
+import Input, {
+  IconNames,
+  KeyboardTypes,
+  ReturnKeyTypes,
+} from '../components/Input';
+import SafeInputView from '../components/SafeInputView';
 
 const SignInScreen = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   return (
-    <View style={styles.container}>
-      <Image source={require('../../assets/main.png')} style={styles.image} />
-      <Input
-        title={'email'}
-        placeholder={'your@email.com'}
-        keyboardType={KeyboardTypes.EMAIL}
-        returnKeyType={ReturnKeyTypes.NEXT}
-      />
-      <Input
-        title={'password'}
-        placeholder={'password'}
-        returnKeyType={ReturnKeyTypes.DONE}
-        secureTextEntry
-      />
-    </View>
+    <SafeInputView>
+      <View style={styles.container}>
+        <Image source={require('../../assets/main.png')} style={styles.image} />
+        <Input
+          value={email}
+          onChangeText={(text) => setEmail(text.trim())}
+          title={'이메일'}
+          placeholder={'your@email.com'}
+          keyboardType={KeyboardTypes.EMAIL}
+          returnKeyType={ReturnKeyTypes.NEXT}
+          iconName={IconNames.EMAIL}
+        />
+        <Input
+          value={password}
+          onChangeText={(text) => setPassword(text.trim())}
+          title={'패스워드'}
+          placeholder={'password'}
+          returnKeyType={ReturnKeyTypes.DONE}
+          secureTextEntry
+          iconName={IconNames.PASSWORD}
+        />
+      </View>
+    </SafeInputView>
   );
 };
 
